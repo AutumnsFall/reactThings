@@ -21,16 +21,31 @@
                 age : 30
             }
 
-            handleClick(e) {
+            handleClick = (e) => {
+                this.setState({
+                    name: "Yasha"
+                });
                 console.log(e.target);
+                console.log(this.state);
             }
 
-            handleMouseOver(e) {
+            handleMouseOver = (e) => {
                 console.log(e.target, e.pageX, e.pageY);
             }
 
-            handleCopy(e) {
+            handleCopy = (e) => {
                 console.log("Awesome. The user copied the string.")
+            }
+
+            handleChange = (e) => {
+                this.setState({
+                    name: e.target.value
+                });
+            }
+
+            handleSubmit = (e) => {
+                e.preventDefault();
+                console.log("Log Submitted.", this.state.name);
             }
 
             render() {
@@ -41,6 +56,12 @@
                         <button onClick={this.handleClick} > Log State </button>
                         <button onMouseOver={this.handleMouseOver}> Hover Me </button>
                         <p onCopy={this.handleCopy}> In greatest attempts, It is glorious even to fail. </p>
+                        <form onSubmit={this.handleSubmit}>
+                            <input type="text" onChange = {this.handleChange}/>
+                            <button type="submit" > Submit </button>
+                        </form>
+
+
                     </div>
                 )
             }
